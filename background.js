@@ -76,7 +76,7 @@ async function handleLookup(rawWord) {
     let record = await db.words.get(word);
 
     if (record) {
-      // HIT: Auto Increment on lookup (Requirement: "Auto accum")
+      record.count = (record.count || 0) + 1;
       record.lastUpdated = Date.now();
       await db.words.put(record);
       return { success: true, data: record, source: 'DB' };
