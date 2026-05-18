@@ -68,7 +68,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 // --- Handlers ---
 
 async function handleLookup(rawWord) {
-  const word = rawWord.toLowerCase().trim();
+  const word = rawWord.trim();
   if (!word) return { success: false, error: 'Empty input' };
 
   try {
