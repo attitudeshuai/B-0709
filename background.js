@@ -68,7 +68,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 // --- Handlers ---
 
 async function handleLookup(rawWord) {
-  const word = rawWord.trim();
+  const word = rawWord.toLowerCase().trim();
   if (!word) return { success: false, error: 'Empty input' };
 
   try {
@@ -77,7 +77,6 @@ async function handleLookup(rawWord) {
 
     if (record) {
       // HIT: Auto Increment on lookup (Requirement: "Auto accum")
-      record.count = (record.count || 0) + 1;
       record.lastUpdated = Date.now();
       await db.words.put(record);
       return { success: true, data: record, source: 'DB' };

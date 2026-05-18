@@ -22,7 +22,7 @@ async function loadWords() {
         <div class="row-main">
           <div style="flex:1;">
              <span class="w-text">${escapeHtml(w.displayWord || w.word)}</span>
-             <span style="font-size:11px;color:#888; margin-left:5px;">(${w.count} 次)</span>
+             <span style="font-size:11px;color:#888; margin-left:5px;">(${w.count + 1} 次)</span>
           </div>
           <span class="w-badge">${w.pos || '单词'}</span>
         </div>
